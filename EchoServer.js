@@ -5,13 +5,13 @@ const net = require('node:net');
  * passed to net.createServer() is called with the created socket for that client
 */
 const server = net.createServer((socket) => {
-    console.log("Connection from", socket.remoteAddress, "port", socket.remotePort)
+    console.log("Connection from", socket.remoteAddress, "port:", socket.remotePort)
 
     socket.on("data", (buffer) => {
         socket.write(`${buffer.toString("utf-8")}\n`)
     })
     socket.on("end", () => {
-        console.log("Closed", socket.remoteAddress, "port", socket.remotePort)
+        console.log("Closed", socket.remoteAddress, "port:", socket.remotePort)
     })
 });
 
